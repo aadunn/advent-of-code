@@ -51,10 +51,15 @@ depth_increases = 0
 with open(filename, 'r') as input_file:
 	lines = input_file.readlines()
 
-	previous_depth = -1
+	previous_depth = 0
 	for line in lines:
+
+		# skip inital depth
+		if previous_depth == 0:
+			next
+
 		current_depth = int(line)
-		if current_depth > previous_depth and previous_depth != -1:
+		if current_depth > previous_depth:
 			depth_increases += 1
 
 		previous_depth = current_depth
